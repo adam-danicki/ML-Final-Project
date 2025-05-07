@@ -3,7 +3,6 @@ import numpy as np
 import sklearn.model_selection
 import sklearn.utils
 from sklearn.datasets import load_digits
-import os
 
 ###---------------------------------------------------------------------
 ### csv processor and loader

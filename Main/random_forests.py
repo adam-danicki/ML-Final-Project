@@ -267,7 +267,7 @@ def strat_kfold(attribs, labels, ntree, min_size):
 
     folds = [np.array(fold) for fold in folds]
 
-    accs, precs, recs, f1s = [], [], [], []
+    accs, f1s = [], []
     for i in range(k):
         test_idex = np.array(folds[i])
         train_idex = np.array([idex for j in range(k) if j != i for idex in folds[j]])
@@ -297,8 +297,8 @@ for ntree in ntree_vals:
     print(f"{ntree}\t{acc:.4f}\t\t{f1:.4f}")
 
 plt.figure()
-plt.plot(ntree_vals, accs, marker= 'o', label='Accuracy')
-plt.plot(ntree_vals, f1s, marker= 's', label='F1 Score')
+plt.plot(ntree_vals, accs, marker= 'o', label= 'Accuracy')
+plt.plot(ntree_vals, f1s, marker= 's', label= 'F1 Score')
 plt.title('Random Forest: Accuracy and F1 Score vs Number of Trees')
 plt.xlabel('Number of Trees')
 plt.ylabel('Score')
