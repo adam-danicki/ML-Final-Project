@@ -6,10 +6,7 @@ from collections import Counter
 
 
 ### -------------------------------------------
-### Dataset loading (wdbc, loan, raisin, titanic)
-### -------------------------------------------
-### -------------------------------------------
-### Dataset loading (modular)
+### Dataset loading
 ### -------------------------------------------
 train_attribs, test_attribs, train_labels, test_labels, cat_indices = load_data('./Data/table_results.tgn', test_size= 0.2, train_size= 0.8)
 
