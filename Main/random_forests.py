@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from load_and_process import load_data
 from collections import Counter
@@ -8,7 +7,7 @@ from collections import Counter
 ### -------------------------------------------
 ### Dataset loading
 ### -------------------------------------------
-train_attribs, test_attribs, train_labels, test_labels, cat_indices = load_data('./Data/table_results.tgn', test_size= 0.2, train_size= 0.8)
+train_attribs, test_attribs, train_labels, test_labels, cat_indices = load_data('./Data/digits', test_size= 0.2, train_size= 0.8)
 
 
 ### -------------------------------------------
@@ -259,6 +258,7 @@ def strat_kfold(attribs, labels, ntree, min_size):
         cls_index = np.where(labels == cls)[0]
         np.random.shuffle(cls_index)
         split_parts = np.array_split(cls_index, k)
+        
         for i in range(k):
             folds[i].extend(split_parts[i])
 
@@ -301,5 +301,4 @@ plt.xlabel('Number of Trees')
 plt.ylabel('Score')
 plt.grid(True)
 plt.legend()
-plt.savefig('rf_accuracy_f1_vs_ntree.png')
 plt.show()
