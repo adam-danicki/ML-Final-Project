@@ -97,7 +97,7 @@ def best_split(attribs, labels, attr_indexes):
 ### -------------------------------------------
 ### Build tree
 ### -------------------------------------------
-def build_tree(attribs, labels, min_size, attr_indexes=None):
+def build_tree(attribs, labels, min_size, attr_indexes= None):
     if len(labels) == 1:
         return Counter(labels).most_common(1)[0][0]
 
@@ -250,7 +250,7 @@ def rand_forest(train_attribs, train_labels, test_attribs, ntree, min_size):
 ### Stratified Cross Validaion
 ### -------------------------------------------
 def strat_kfold(attribs, labels, ntree, min_size):
-    k = 5
+    k = 10
     attribs = np.array(attribs)
     labels = np.array(labels)
     folds = [[] for _ in range(k)]

@@ -25,8 +25,14 @@ def lap_csv(filepath, test_size, train_size):
         print(f"ERROR: File not found: {filepath}")
         exit()
 
-    labels = data['label'].copy().to_numpy()
-    attribs = data.drop(columns= ['label'])
+    # Infer label column
+    if 'label' in data.columns:
+        label_col = 'label'
+    elif 'Diagnosis' in data.columns:
+        label_col = 'Diagnosis'
+
+    labels = data[label_col].copy().to_numpy()
+    attribs = data.drop(columns=[label_col])
 
     for attr in attribs.columns:
         if 'cat' in attr:
@@ -37,11 +43,11 @@ def lap_csv(filepath, test_size, train_size):
     attribs_np, labels_np = sklearn.utils.shuffle(attribs.to_numpy(), labels)
 
     train_attribs, test_attribs, train_labels, test_labels = sklearn.model_selection.train_test_split(
-        attribs_np, labels_np, test_size= test_size, train_size= train_size
+        attribs_np, labels_np, test_size=test_size, train_size=train_size
     )
 
-    min_attr = train_attribs.min(axis= 0)
-    max_attr = train_attribs.max(axis= 0)
+    min_attr = train_attribs.min(axis=0)
+    max_attr = train_attribs.max(axis=0)
     range_attr = np.where((max_attr - min_attr) == 0, 1, max_attr - min_attr)
 
     train_attribs = (train_attribs - min_attr) / range_attr
