@@ -269,8 +269,15 @@ def strat_kfold(attribs, labels, ntree, min_size):
         test_idex = np.array(folds[i])
         train_idex = np.array([idex for j in range(k) if j != i for idex in folds[j]])
 
-        trainf_attribs, trainf_labels = attribs[train_idex], labels[train_idex]
-        testf_attribs, testf_labels = attribs[test_idex], labels[test_idex]
+        trainf_attribs_raw, trainf_labels = attribs[train_idex], labels[train_idex]
+        testf_attribs_raw, testf_labels = attribs[test_idex], labels[test_idex]
+
+        min_attr = trainf_attribs_raw.min(axis= 0)
+        max_attr = trainf_attribs_raw.max(axis= 0)
+        range_attr = np.where((max_attr - min_attr) == 0, 1, max_attr - min_attr)
+
+        trainf_attribs = (trainf_attribs_raw - min_attr) / range_attr
+        testf_attribs = (testf_attribs_raw - min_attr) / range_attr
 
         preds = rand_forest(trainf_attribs, trainf_labels, testf_attribs, ntree, min_size= min_size)
 
@@ -278,6 +285,7 @@ def strat_kfold(attribs, labels, ntree, min_size):
         f1s.append(comp_f1(testf_labels, preds))
 
     return np.mean(accs), np.mean(f1s)
+
 
 ### -------------------------------------------
 ### Experiments

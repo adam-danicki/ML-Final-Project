@@ -7,16 +7,16 @@ from sklearn.datasets import load_digits
 ###---------------------------------------------------------------------
 ### csv processor and loader
 ###---------------------------------------------------------------------
-#       Parameters:
-#           filepath (str): Path to the dataset CSV file.
-#           test_size (float)
-#           train_size (float)
-#       Returns:
-#           train_attribs (np.ndarray): Normalized training attributes
-#           test_attribs (np.ndarray): Normalized testing attributes
-#           train_labels (np.ndarray): Training labels
-#           test_labels (np.ndarray): Testing labels
-#           cat_indices (list): Indices of categorical features
+#       Params:
+#           filepath: Path to the dataset CSV file.
+#           test_size
+#           train_size
+#       Return:
+#           train_attribs: Training attributes
+#           test_attribs: Testing attributes
+#           train_labels: Training labels
+#           test_labels: Testing labels
+#           cat_indices: Indices of categorical features
 def lap_csv(filepath, test_size, train_size):
     try:
         data = pd.read_csv(filepath)
@@ -46,27 +46,20 @@ def lap_csv(filepath, test_size, train_size):
         attribs_np, labels_np, test_size=test_size, train_size=train_size
     )
 
-    min_attr = train_attribs.min(axis=0)
-    max_attr = train_attribs.max(axis=0)
-    range_attr = np.where((max_attr - min_attr) == 0, 1, max_attr - min_attr)
-
-    train_attribs = (train_attribs - min_attr) / range_attr
-    test_attribs = (test_attribs - min_attr) / range_attr
-
     return train_attribs, test_attribs, train_labels, test_labels, cat_indices
 
 
 ###---------------------------------------------------------------------
 ### digits processor and loader
 ###---------------------------------------------------------------------
-#       Parameters:
-#           test_size (float)
-#           train_size (float)
-#       Returns:
-#           train_attribs (np.ndarray): Normalized training attributes
-#           test_attribs (np.ndarray): Normalized testing attributes
-#           train_labels (np.ndarray): Training labels
-#           test_labels (np.ndarray): Testing labels
+#       Params:
+#           test_size
+#           train_size
+#       Return:
+#           train_attribs: Training attributes
+#           test_attribs: Testing attributes
+#           train_labels: Training labels
+#           test_labels: Testing labels
 def lap_digits(test_size, train_size):
     digits = load_digits()
     attribs = digits.data
@@ -77,9 +70,6 @@ def lap_digits(test_size, train_size):
     train_attribs, test_attribs, train_labels, test_labels = sklearn.model_selection.train_test_split(
         attribs, labels, test_size= test_size, train_size= train_size
     )
-
-    train_attribs = train_attribs / 16.0
-    test_attribs = test_attribs / 16.0
 
     return train_attribs, test_attribs, train_labels, test_labels
 
