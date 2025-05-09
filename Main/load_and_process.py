@@ -30,8 +30,9 @@ def lap_csv(filepath, test_size, train_size):
     elif 'Diagnosis' in data.columns:
         label_col = 'Diagnosis'
 
-    labels = data[label_col].copy().to_numpy()
-    attribs = data.drop(columns=[label_col])
+    labels_raw = data[label_col].copy().to_numpy()
+    labels, _ = pd.factorize(labels_raw)
+    attribs = data.drop(columns=[label_col])    
 
     for attr in attribs.columns:
         if 'cat' in attr:
@@ -90,12 +91,8 @@ def load_data(source, test_size, train_size):
     if source.endswith('.csv'):
         train_attribs, test_attribs, train_labels, test_labels, cat_indices = lap_csv(source, test_size, train_size)
     
-    elif source.endswith('.tgn'):
+    elif 'digits' in source:
         train_attribs, test_attribs, train_labels, test_labels = lap_digits(test_size, train_size)
         cat_indices = []
-    
-    else:
-        print(f"ERROR: Unsupported dataset source: {source}")
-        exit()
 
     return train_attribs, test_attribs, train_labels, test_labels, cat_indices
