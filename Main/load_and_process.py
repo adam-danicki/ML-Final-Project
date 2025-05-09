@@ -25,7 +25,6 @@ def lap_csv(filepath, test_size, train_size):
         print(f"ERROR: File not found: {filepath}")
         exit()
 
-    # Infer label column
     if 'label' in data.columns:
         label_col = 'label'
     elif 'Diagnosis' in data.columns:
