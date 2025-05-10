@@ -7,16 +7,6 @@ from sklearn.datasets import load_digits
 ###---------------------------------------------------------------------
 ### csv processor and loader
 ###---------------------------------------------------------------------
-#       Params:
-#           filepath: Path to the dataset CSV file.
-#           test_size
-#           train_size
-#       Return:
-#           train_attribs: Training attributes
-#           test_attribs: Testing attributes
-#           train_labels: Training labels
-#           test_labels: Testing labels
-#           cat_indices: Indices of categorical features
 def lap_csv(filepath, test_size, train_size):
     try:
         data = pd.read_csv(filepath)
@@ -52,14 +42,6 @@ def lap_csv(filepath, test_size, train_size):
 ###---------------------------------------------------------------------
 ### digits processor and loader
 ###---------------------------------------------------------------------
-#       Params:
-#           test_size
-#           train_size
-#       Return:
-#           train_attribs: Training attributes
-#           test_attribs: Testing attributes
-#           train_labels: Training labels
-#           test_labels: Testing labels
 def lap_digits(test_size, train_size):
     digits = load_digits()
     attribs = digits.data
