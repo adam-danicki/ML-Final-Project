@@ -33,3 +33,13 @@ KNN (Adam)
 - Output contains two things
     - a table printed in the console comparing k, accuracy, and F1 score
     - a plot of Accuracy and F1 score vs the number of neighbors
+
+
+
+KNN & Neural Nets(Sahil) -> Performed on all datasets except Digits
+-With the libraries above installed into your environment, all you have to do is run each labeled cell in whichever 
+ algorithm you want to run, though be sure to go top down to correctly load in all data, packages and initialize all functions.
+ Note that the outputs already present in the notebook may differ from the outputs you see in the report, since I did a sanity 
+ run to make sure everything actually runs, hence the different outputs. 
+
+
