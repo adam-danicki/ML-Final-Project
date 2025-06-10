@@ -1,0 +1,43 @@
+---INSTRUCTIONS---
+
+Installs
+- To run the experiments install the Python libraries
+    - numpy
+    - pandas
+    - matplotlib
+    - scikit-learn
+
+Random Forests  (Adam)
+- Run the script containing the Random Forests implementation 'random_forest.py'
+- To change datasets, update the source parameter in load_data()
+    - './Data/rice.csv'
+    - './Data/parkinsons.csv'
+    - './Data/credit.csv'
+    - 'digits' (from scikit-learn)
+- The experiments section has two key hyperparameters which can be changed
+    - ntree_vals
+    - min_size
+- Output contains two things
+    - a table printed in the console including comparing ntree, accuracy, and F1 score
+    - a plot of Accuracy and F1 score vs the number of trees
+
+KNN (Adam)
+- Run the script containing the KNN implementation 'knn_algorithm.py'
+- To change datasets, update the source parameter in load_data()
+    - './Data/rice.csv'
+    - './Data/parkinsons.csv'
+    - './Data/credit.csv'
+    - 'digits' (from scikit-learn)
+- The experiments section has one key hyperparameter which can be changed
+    - k_vals
+- Output contains two things
+    - a table printed in the console comparing k, accuracy, and F1 score
+    - a plot of Accuracy and F1 score vs the number of neighbors
+
+
+
+KNN & Neural Nets(Sahil) -> Performed on all datasets except Digits
+-With the libraries above installed into your environment, all you have to do is run each labeled cell in whichever 
+ algorithm you want to run, though be sure to go top down to correctly load in all data, packages and initialize all functions.
+ Note that the outputs already present in the notebook may differ from the outputs you see in the report, since I did a sanity 
+ run to make sure everything actually runs, hence the different outputs. 
