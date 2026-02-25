@@ -41,3 +41,5 @@ KNN & Neural Nets(Sahil) -> Performed on all datasets except Digits
  algorithm you want to run, though be sure to go top down to correctly load in all data, packages and initialize all functions.
  Note that the outputs already present in the notebook may differ from the outputs you see in the report, since I did a sanity 
  run to make sure everything actually runs, hence the different outputs. 
+
+ Analysis Portion and key takeways can be found in the Analysis.pfd
